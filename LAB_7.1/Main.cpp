@@ -87,8 +87,6 @@ void Sort(int** z, const int rowCount, const int colCount)
     }
 }
 
-
-
 void Calc(int** z, const int rowCount, const int colCount, int& S, int& k)
 {
     S = 0;
