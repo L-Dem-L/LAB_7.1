@@ -10,8 +10,7 @@ void Change(int** a, const int row1, const int row2, const int colCount);
 void Sort(int** z, const int rowCount, const int colCount);
 void Calc(int** z, const int rowCount, const int colCount, int& S, int& k);
 
-int main()
-{
+int main(){
     srand((unsigned)time(NULL));
     int Low = -34;
     int High = 26;
