@@ -59,32 +59,31 @@ void Print(int** z, const int rowCount, const int colCount)
     cout << endl;
 }
 
-void Change(int** a, const int row1, const int row2, const int colCount)
+void Sort(int** z, const int rowCount, const int colCount)
+{
+    for (int i0 = 0; i0 < colCount - 1; i0++)
+        for (int i1 = 0; i1 < colCount - i0 - 1; i1++)
+            if ((z[0][i1] < z[0][i1 + 1]) ||
+                (z[0][i1] == z[0][i1 + 1] &&
+                    z[1][i1] < z[1][i1 + 1]) ||
+                (z[0][i1] == z[0][i1 + 1] &&
+                    z[1][i1] == z[1][i1 + 1] &&
+                    z[2][i1] < z[2][i1 + 1]))
+                Change(z, i1, i1 + 1, rowCount);
+}
+
+void Change(int** z, const int col1, const int col2, const int rowCount)
 {
     int tmp;
-    for (int j = 0; j < colCount; j++)
+    for (int j = 0; j < rowCount; j++)
     {
-        tmp = a[row1][j];
-        a[row1][j] = a[row2][j];
-        a[row2][j] = tmp;
+        tmp = z[j][col1];
+        z[j][col1] = z[j][col2];
+        z[j][col2] = tmp;
     }
 }
 
-void Sort(int** z, const int rowCount, const int colCount)
-{
-    for (int i0 = 0; i0 < rowCount - 1; i0++)
-    {
-        for (int i1 = 0; i1 < rowCount - i0 - 1; i1++)
-        {
-            if ((z[i1][0] < z[i1 + 1][0]) ||
-                (z[i1][0] == z[i1 + 1][0] && z[i1][1] < z[i1 + 1][1]) ||
-                (z[i1][0] == z[i1 + 1][0] && z[i1][1] == z[i1 + 1][1] && z[i1][3] > z[i1 + 1][3]))
-            {
-                Change(z, i1, i1 + 1, colCount);
-            }
-        }
-    }
-}
+
 
 void Calc(int** z, const int rowCount, const int colCount, int& S, int& k)
 {
